@@ -9,6 +9,7 @@ docker_config(){
 # Start the docker daemon as a background task:
 start_daemon(){
 	dockerd --config-file=/etc/docker/daemon.json -p /var/run/docker-bootstrap.pid &
+    sleep 10
 }
 
 docker_config
