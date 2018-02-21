@@ -15,5 +15,6 @@ run:
   - -exc
   - |
     env
+    /sbin/init
     docker ps
 
