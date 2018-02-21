@@ -1,0 +1,21 @@
+
+resources:
+  - name: source-code
+    type: git
+    source:
+      uri: https://eos2git.cec.lab.emc.com/VCE-Symphony/connect-home-service.git
+      branch: rousef_poc_changes
+      username: ((local_git_username))
+      password: ((local_git_password))
+      skip_ssl_verification: true
+
+
+jobs:
+  - name: maven-package
+    plan:
+    - aggregate:
+      - get: source-code
+        trigger: true
+    - task: maven-package
+      privileged: true
+      file: source-code/pipeline/maven-package.yml

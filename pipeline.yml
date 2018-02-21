@@ -1,0 +1,17 @@
+
+resources:
+  - name: source-code
+    type: git
+    source:
+      uri: https://github.com/rousef42/pipeline_tests.git
+
+
+jobs:
+  - name: maven-package
+    plan:
+    - aggregate:
+      - get: source-code
+        trigger: true
+    - task: maven-package
+      privileged: true
+      file: source-code/pipeline/maven-package.yml
