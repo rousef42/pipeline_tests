@@ -3,9 +3,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: docker
-    tag: latest
-    privileged: true
+    repository: josebarn/dcind
 
 inputs:
   - name: source-code
@@ -15,9 +13,9 @@ run:
   args: 
   - -exc
   - |
+    source /docker-lib.sh
+    start_docker
     env
     whoami
-    ls -l source-code/pipeline/launch_docker.sh
-    source-code/pipeline/launch_docker.sh
     docker ps
 
